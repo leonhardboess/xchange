@@ -17,7 +17,7 @@ export function Auctions() {
         padding="$3"
         style={{ width: "100%" }}
       >
-        <H2>Running Auctions</H2>
+        <H2 style={{ fontFamily: "SilkScreen" }}>Running Auctions</H2>
         <XStack
           space="$4"
           mt="$4"
@@ -34,7 +34,7 @@ export function Auctions() {
             />
           ))}
         </XStack>
-        <H2 mt="$4">Starting Soon</H2>
+        <H2 style={{ fontFamily: "SilkScreen" }} mt="$4">Starting Soon</H2>
         {[...Array(2).keys()].map((i) => (
           <XStack
             space="$4"

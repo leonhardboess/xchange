@@ -1,4 +1,4 @@
-import { XStack, YStack, Avatar, H4, Text, Switch } from 'tamagui'
+import { XStack, YStack, H4, Text, Switch } from 'tamagui'
 import { Sun, Moon } from '@tamagui/lucide-icons'
 import { useWalletConnectModal } from '@walletconnect/modal-react-native'
 import { useThemeContext } from '../../providers';
@@ -10,13 +10,9 @@ export function Appbar() {
   return (
     <XStack p="$3" ai="center" jc="space-between">
       <XStack ai="center">
-        <Avatar size="$5" circular>
-          <Avatar.Image source={{ uri: 'https://avatars.githubusercontent.com/u/4060187?v=4' }} />
-          <Avatar.Fallback backgroundColor="$gray5" />
-        </Avatar>
-        <YStack ml="$2">
-          <Text color="$gray10">reNFTaissance</Text>
-          <H4 fontWeight="bold" mt="$-2">{address?.slice(0, 5)}...{address?.slice(-4)}</H4>
+        <YStack>
+          <Text color="$gray10">{address?.slice(0, 5)}...{address?.slice(-4)}</Text>
+          <H4 fontWeight="bold" mt="$-2" style={{ fontFamily: "SilkScreen" }}>reNFTaissance</H4>
         </YStack>
       </XStack>
       <XStack ai="center" space="$2">

@@ -27,7 +27,7 @@ export function AuctionCard({ title, startDate, endDate, img, currentBid, ...pro
         <XStack px="$2" py="$1" backgroundColor="$backgroundFocus" borderRadius="$2" >
           {!ended &&
             <XStack ai="center" jc="space-between" flexGrow={1}>
-              <Paragraph theme="alt2" textAlign="center">{started ? "Ends in" : "Starts in"}</Paragraph>
+              <Paragraph theme="alt2" textAlign="center">{started ? "Ends In" : "Starts In"}:</Paragraph>
               <Paragraph theme="alt2" textAlign="center"><Countdown endTime={startDate} /></Paragraph>
             </XStack>
           }
