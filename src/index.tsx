@@ -1,9 +1,11 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { useWalletConnectModal } from '@walletconnect/modal-react-native';
-import { YStack, Button } from 'tamagui'
+import { YStack, Button, Text } from 'tamagui'
 import { Auctions } from './screens';
 import { Auction } from './screens/Auction';
 import { createStackNavigator } from '@react-navigation/stack';
+import { ImageBackground, StyleSheet } from 'react-native';
+import { LogIn } from '@tamagui/lucide-icons';
 
 const Stack = createStackNavigator();
 
@@ -13,8 +15,12 @@ export function App() {
   return (
     <NavigationContainer>
       {!address ? (
-        <YStack jc={"center"} ai="center">
-          <Button onPress={() => open()}>Connect Wallet</Button>
+        <YStack f={1}>
+          <ImageBackground source={require("../assets/splash.png")} style={styles.image}>
+            <Button icon={LogIn} onPress={() => open()} style={{ width: 200, marginTop: 250 }} textAlign="center" size="$6">
+              <Text fontSize="$6" style={{ fontFamily: "SilkScreen", textAlign: "center" }}>Connect Wallet</Text>
+            </Button>
+          </ImageBackground>
         </YStack>
       ) :
         <Stack.Navigator
@@ -35,3 +41,12 @@ export function App() {
     </NavigationContainer>
   )
 }
+
+const styles = StyleSheet.create({
+  image: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+});
