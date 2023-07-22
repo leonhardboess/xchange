@@ -1,15 +1,24 @@
 import { Card, H2, Image, XStack, YStack, Paragraph, H4, H3, YGroup, ListItem, Separator } from "tamagui";
-import { BaseScreen } from "../components/layout/BaseScreen";
+import { BaseScreen } from "../components/layout";
 import { Countdown } from '../components';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useThemeContext } from "../providers";
 import dayjs from "dayjs";
+import { Pressable } from "react-native";
 
 const startDate = dayjs().add(1, "day").toDate();
 const endDate = dayjs().add(2, "day").toDate();
-export function Auction() {
+const MAX = 12.032;
+
+export function Auction({ navigation }: any) {
   const started = dayjs().isAfter(startDate)
   const ended = dayjs().isAfter(endDate)
+  const { theme } = useThemeContext();
   return (
     <BaseScreen>
+      <Pressable onPress={() => navigation.goBack()}>
+        <MaterialCommunityIcons name="arrow-left" size={24} color={theme === "light" ? "black" : "white"} style={{ marginLeft: 12 }} />
+      </Pressable>
       <YStack
         mt="$3"
         bg="$backgroundStrong"
@@ -45,22 +54,16 @@ export function Auction() {
         </XStack>
         <H4 my="$3">Bids:</H4>
         <YGroup separator={<Separator />}>
-          <YGroup.Item>
-            <ListItem>
-              <XStack ai="center" jc="space-between" flexGrow={1}>
-                <H4 theme="alt2" textAlign="center">12.032 ETH</H4>
-                <H4 theme="alt2" textAlign="center">0x123...456</H4>
-              </XStack>
-            </ListItem>
-          </YGroup.Item>
-          <YGroup.Item>
-            <ListItem>
-              <XStack ai="center" jc="space-between" flexGrow={1}>
-                <H4 theme="alt2" textAlign="center">12.032 ETH</H4>
-                <H4 theme="alt2" textAlign="center">0x123...456</H4>
-              </XStack>
-            </ListItem>
-          </YGroup.Item>
+          {[...Array(11).keys()].map((i) => (
+            <YGroup.Item key={i}>
+              <ListItem>
+                <XStack ai="center" jc="space-between" flexGrow={1}>
+                  <H4 theme="alt2" textAlign="center">{MAX - i} ETH</H4>
+                  <H4 theme="alt2" textAlign="center">0x123...456</H4>
+                </XStack>
+              </ListItem>
+            </YGroup.Item>
+          ))}
         </YGroup>
       </YStack>
     </BaseScreen>

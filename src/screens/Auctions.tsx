@@ -8,7 +8,8 @@ const TEMP = {
   img: "https://www.nicepng.com/png/detail/965-9651318_download-10-selected-gold-coins-png-images-with.png",
 }
 
-export function Auctions() {
+export function Auctions({ navigation }: any) {
+  const handleNavigate = () => navigation.navigate('Single Auction')
   return (
     <BaseScreen>
       <YStack
@@ -31,6 +32,7 @@ export function Auctions() {
               img={TEMP.img}
               currentBid={5.12}
               style={{ flexGrow: 1 }}
+              onPress={handleNavigate}
             />
           ))}
         </XStack>
@@ -49,6 +51,8 @@ export function Auctions() {
                 endDate={dayjs().add(2, "day").toDate()}
                 img={TEMP.img}
                 style={{ flexGrow: 1 }}
+                animation={undefined}
+                pressStyle={undefined}
               />
             ))}
           </XStack>

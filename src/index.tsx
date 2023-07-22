@@ -1,17 +1,14 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useWalletConnectModal } from '@walletconnect/modal-react-native';
-import { YStack, Button, XStack, useTheme } from 'tamagui'
+import { YStack, Button } from 'tamagui'
 import { Auctions } from './screens';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { StyleSheet } from 'react-native';
 import { Auction } from './screens/Auction';
+import { createStackNavigator } from '@react-navigation/stack';
 
-const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 export function App() {
   const { open, address } = useWalletConnectModal();
-  const theme = useTheme();
 
   return (
     <NavigationContainer>
@@ -20,43 +17,20 @@ export function App() {
           <Button onPress={() => open()}>Connect Wallet</Button>
         </YStack>
       ) :
-        <Tab.Navigator
+        <Stack.Navigator
           screenOptions={{
             headerShown: false,
-            tabBarBackground: () => (
-              <XStack style={[StyleSheet.absoluteFill]} bg="$backgroundHover" />
-            ),
-            tabBarActiveTintColor: theme.color.val,
           }}
           initialRouteName='Home'>
-          <Tab.Screen
+          <Stack.Screen
             name="Auctions"
             component={Auctions}
-            options={{
-              tabBarIcon: (props) => (
-                <MaterialCommunityIcons name="shopping-outline" size={props.size} color={props.color} />
-              ),
-            }}
           />
-          <Tab.Screen
-            name="Inventory"
+          <Stack.Screen
+            name="Single Auction"
             component={Auction}
-            options={{
-              tabBarIcon: (props) => (
-                <MaterialCommunityIcons name="folder-multiple-image" size={props.size} color={props.color} />
-              ),
-            }}
           />
-          <Tab.Screen
-            name="Mint"
-            component={Auctions}
-            options={{
-              tabBarIcon: (props) => (
-                <MaterialCommunityIcons name="pencil-outline" size={props.size} color={props.color} />
-              ),
-            }}
-          />
-        </Tab.Navigator>
+        </Stack.Navigator>
       }
     </NavigationContainer>
   )
