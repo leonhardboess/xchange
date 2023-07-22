@@ -2,6 +2,8 @@ import { YStack, XStack, H2 } from 'tamagui'
 import { AuctionCard } from "../components/"
 import dayjs from 'dayjs'
 import { BaseScreen } from '../components/layout/BaseScreen'
+import { useMarketplace, useNft, useWeb3Provider } from '../hooks';
+import { useEffect } from 'react';
 
 const TEMP = {
   title: "Auction 1",
@@ -10,6 +12,46 @@ const TEMP = {
 
 export function Auctions({ navigation }: any) {
   const handleNavigate = () => navigation.navigate('Single Auction')
+  const web3 = useWeb3Provider();
+
+  useEffect(() => {
+    console.log("hey")
+    if (web3) {
+      web3.getSigner().getAddress().then(console.log);
+      web3.getSigner().getTransactionCount().then(console.log);
+      console.log(web3.getSigner());
+      web3.getNetwork().then(console.log)
+      console.log("ho")
+      web3.getGasPrice().then(console.log)
+      web3.getCode("0x91b9453c41745192f4504Bc62307859a83C4D57B").then(console.log)
+    }
+  }, [web3])
+  /*
+  const nft = useNft();
+  const marketplace = useMarketplace();
+  useEffect(() => {
+    if (nft) {
+      const getAuctions = async () => {
+        console.log("started nft")
+        const tx = nft.name();
+        console.log(tx, "nft")
+        console.log(await tx)
+      }
+      getAuctions()
+    }
+  }, [nft])
+  useEffect(() => {
+    if (marketplace) {
+      const getAuctions = async () => {
+        console.log("started marketplace", marketplace)
+        const tx = marketplace.getListedNfts();
+        console.log(tx, "marketplace")
+        console.log(await tx)
+      }
+      getAuctions()
+    }
+  }, [marketplace])
+  */
   return (
     <BaseScreen>
       <YStack
