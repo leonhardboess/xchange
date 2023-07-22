@@ -14,6 +14,7 @@ export function Auction({ navigation }: any) {
   const started = dayjs().isAfter(startDate)
   const ended = dayjs().isAfter(endDate)
   const { theme } = useThemeContext();
+
   return (
     <BaseScreen>
       <Pressable onPress={() => navigation.goBack()}>
