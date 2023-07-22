@@ -17,7 +17,7 @@ export function App() {
       {!address ? (
         <YStack f={1}>
           <ImageBackground source={require("../assets/splash.png")} style={styles.image}>
-            <Button icon={LogIn} onPress={() => open()} style={{ width: 200, marginTop: 250 }} textAlign="center" size="$6">
+            <Button icon={LogIn} onPress={() => open()} style={{ width: 250, marginTop: 250 }} textAlign="center" size="$6">
               <Text fontSize="$6" style={{ fontFamily: "SilkScreen", textAlign: "center" }}>Connect Wallet</Text>
             </Button>
           </ImageBackground>
