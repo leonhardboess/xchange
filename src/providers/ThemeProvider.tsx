@@ -15,7 +15,7 @@ export const ThemeProvider = ({ children }: any) => {
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
-      <Theme name={theme === "dark" ? "dark_green" : "light_green"}>
+      <Theme name={theme === "dark" ? "dark_pink" : "light_pink"}>
         {children}
       </Theme>
     </ThemeContext.Provider>

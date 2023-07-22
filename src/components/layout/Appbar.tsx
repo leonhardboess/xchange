@@ -8,14 +8,14 @@ export function Appbar() {
   const { theme, setTheme } = useThemeContext();
 
   return (
-    <XStack style={{ width: "100%" }} p="$2" ai="center" jc="space-between">
+    <XStack p="$3" ai="center" jc="space-between">
       <XStack ai="center">
         <Avatar size="$5" circular>
           <Avatar.Image source={{ uri: 'https://avatars.githubusercontent.com/u/4060187?v=4' }} />
           <Avatar.Fallback backgroundColor="$gray5" />
         </Avatar>
         <YStack ml="$2">
-          <Text color="$gray10">XChange</Text>
+          <Text color="$gray10">reNFTaissance</Text>
           <H4 fontWeight="bold" mt="$-2">{address?.slice(0, 5)}...{address?.slice(-4)}</H4>
         </YStack>
       </XStack>

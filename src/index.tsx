@@ -5,12 +5,14 @@ import { YStack, Button, XStack, useTheme } from 'tamagui'
 import { Auctions } from './screens';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { StyleSheet } from 'react-native';
+import { Auction } from './screens/Auction';
 
 const Tab = createBottomTabNavigator();
 
 export function App() {
   const { open, address } = useWalletConnectModal();
   const theme = useTheme();
+
   return (
     <NavigationContainer>
       {!address ? (
@@ -32,16 +34,16 @@ export function App() {
             component={Auctions}
             options={{
               tabBarIcon: (props) => (
-                <MaterialCommunityIcons name="scan-helper" size={props.size} color={props.color} />
+                <MaterialCommunityIcons name="shopping-outline" size={props.size} color={props.color} />
               ),
             }}
           />
           <Tab.Screen
             name="Inventory"
-            component={Auctions}
+            component={Auction}
             options={{
               tabBarIcon: (props) => (
-                <MaterialCommunityIcons name="scan-helper" size={props.size} color={props.color} />
+                <MaterialCommunityIcons name="folder-multiple-image" size={props.size} color={props.color} />
               ),
             }}
           />
@@ -50,7 +52,7 @@ export function App() {
             component={Auctions}
             options={{
               tabBarIcon: (props) => (
-                <MaterialCommunityIcons name="scan-helper" size={props.size} color={props.color} />
+                <MaterialCommunityIcons name="pencil-outline" size={props.size} color={props.color} />
               ),
             }}
           />

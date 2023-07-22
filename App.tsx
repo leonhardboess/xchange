@@ -12,9 +12,9 @@ import config from './tamagui.config'
 const projectId = 'd0f0274917ae60ae1b773f0c92cb587d';
 
 const providerMetadata = {
-  name: 'XChange',
-  description: 'XChange enables good stuff',
-  url: 'https://xchange.com/',
+  name: 'reNFTaissance',
+  description: 'reNFTaissance enables good stuff',
+  url: 'https://reNFTaissance.com/',
   icons: ['https://your-project-logo.com/'],
   redirect: {
     native: 'YOUR_APP_SCHEME://',

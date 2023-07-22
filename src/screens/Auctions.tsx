@@ -1,95 +1,59 @@
-import { SafeAreaView, ScrollView } from 'react-native'
 import { YStack, XStack, H2 } from 'tamagui'
 import { AuctionCard } from "../components/"
-import { Appbar } from '../components/layout'
+import dayjs from 'dayjs'
+import { BaseScreen } from '../components/layout/BaseScreen'
+
+const TEMP = {
+  title: "Auction 1",
+  img: "https://www.nicepng.com/png/detail/965-9651318_download-10-selected-gold-coins-png-images-with.png",
+}
 
 export function Auctions() {
   return (
-    <YStack f={1} ai="center" bg="$backgroundStrong">
-      <SafeAreaView>
-        <Appbar />
-        <ScrollView>
-          <YStack mt="$3"
-            padding="$3">
-            <H2>Running Auctions</H2>
-            <XStack
-              space="$4"
-            >
+    <BaseScreen>
+      <YStack
+        mt="$3"
+        bg="$backgroundStrong"
+        padding="$3"
+        style={{ width: "100%" }}
+      >
+        <H2>Running Auctions</H2>
+        <XStack
+          space="$4"
+          mt="$4"
+        >
+          {[...Array(2).keys()].map((i) => (
+            <AuctionCard
+              key={i}
+              title={TEMP.title}
+              startDate={dayjs().subtract(1, "day").toDate()}
+              endDate={dayjs().add(2, "day").toDate()}
+              img={TEMP.img}
+              currentBid={5.12}
+              style={{ flexGrow: 1 }}
+            />
+          ))}
+        </XStack>
+        <H2 mt="$4">Starting Soon</H2>
+        {[...Array(2).keys()].map((i) => (
+          <XStack
+            space="$4"
+            mt="$4"
+            key={i}
+          >
+            {[...Array(2).keys()].map((i) => (
               <AuctionCard
-                title="Auction 1"
-                startDate={new Date()}
-                endDate={new Date()}
-                img="https://upload.wikimedia.org/wikipedia/commons/0/01/1909_Indian_Cent_NGC_MS65RD_Reverse.png"
+                key={i}
+                title={TEMP.title}
+                startDate={dayjs().add(1, "day").toDate()}
+                endDate={dayjs().add(2, "day").toDate()}
+                img={TEMP.img}
                 style={{ flexGrow: 1 }}
               />
-              <AuctionCard
-                title="Auction 1"
-                startDate={new Date()}
-                endDate={new Date()}
-                img="https://upload.wikimedia.org/wikipedia/commons/0/01/1909_Indian_Cent_NGC_MS65RD_Reverse.png"
-                style={{ flexGrow: 1 }}
-              />
-            </XStack>
-            <H2 mt="$4">Starting Soon</H2>
-            <XStack
-              space="$4"
-            >
-              <AuctionCard
-                title="Auction 1"
-                startDate={new Date()}
-                endDate={new Date()}
-                img="https://upload.wikimedia.org/wikipedia/commons/0/01/1909_Indian_Cent_NGC_MS65RD_Reverse.png"
-                style={{ flexGrow: 1 }}
-              />
-              <AuctionCard
-                title="Auction 1"
-                startDate={new Date()}
-                endDate={new Date()}
-                img="https://upload.wikimedia.org/wikipedia/commons/0/01/1909_Indian_Cent_NGC_MS65RD_Reverse.png"
-                style={{ flexGrow: 1 }}
-              />
-            </XStack>
-            <XStack
-              space="$4"
-              padding="$3"
-            >
-              <AuctionCard
-                title="Auction 1"
-                startDate={new Date()}
-                endDate={new Date()}
-                img="https://upload.wikimedia.org/wikipedia/commons/0/01/1909_Indian_Cent_NGC_MS65RD_Reverse.png"
-                style={{ flexGrow: 1 }}
-              />
-              <AuctionCard
-                title="Auction 1"
-                startDate={new Date()}
-                endDate={new Date()}
-                img="https://upload.wikimedia.org/wikipedia/commons/0/01/1909_Indian_Cent_NGC_MS65RD_Reverse.png"
-                style={{ flexGrow: 1 }}
-              />
-            </XStack>
-            <XStack
-              space="$4"
-              padding="$3"
-            >
-              <AuctionCard
-                title="Auction 1"
-                startDate={new Date()}
-                endDate={new Date()}
-                img="https://upload.wikimedia.org/wikipedia/commons/0/01/1909_Indian_Cent_NGC_MS65RD_Reverse.png"
-                style={{ flexGrow: 1 }}
-              />
-              <AuctionCard
-                title="Auction 1"
-                startDate={new Date()}
-                endDate={new Date()}
-                img="https://upload.wikimedia.org/wikipedia/commons/0/01/1909_Indian_Cent_NGC_MS65RD_Reverse.png"
-                style={{ flexGrow: 1 }}
-              />
-            </XStack>
-          </YStack>
-        </ScrollView>
-      </SafeAreaView>
-    </YStack>
+            ))}
+          </XStack>
+        ))}
+      </YStack>
+    </BaseScreen>
   )
 }
